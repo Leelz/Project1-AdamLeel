@@ -1,12 +1,12 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
-require( 'pry-byebug' )
 require_relative( '../models/category.rb' )
 require_relative( '../models/merchant.rb' )
 require_relative( '../models/transaction.rb' )
 
-#list all the students
+#list all the transactions
 get '/transactions' do
-  @transaction = Transaction.all
+  # return "transactions"
+  @transactions = Transaction.all()
   erb(:index)
 end

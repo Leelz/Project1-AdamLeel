@@ -1,13 +1,13 @@
-<h1>What the crazy talking-hat said</h1>
+<h1>Penny-wise</h1>
 
-<p><a href="/students/new">Create Student</a></p>
+<p><a href="/transactions/new">Create Transaction</a></p>
 
-
-<% for student in @student%>
-<p> First name: <%= student.first_name() %></p>
-<p> Second name: <%= student.second_name() %></p>
-<p> House: <%= student.house() %></p>
-<p> Age: <%= student.age() %></p>
-<p><a href="/students/<%= student.id %>">Show</a></p>
+<% for transaction in @transactions%>
+<p> Category: <%= transaction.category.name() %></p>
+<p> Merchant: <%= transaction.merchant.name() %></p>
+<p> Value: <%= transaction.value() %></p>
+<p> Transaction Date: <%= transaction.transaction_date() %></p>
+<p><a href="/transactions/<%= transaction.id %>">Show</a></p>
+<hr/>
 
 <% end %>
