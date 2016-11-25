@@ -51,6 +51,8 @@ merchant4 = Merchant.new({
 
 merchant4.save
 
+##########################
+
 transaction1 = Transaction.new({
   'category_id' => category1.id,
   'merchant_id' => merchant1.id,
@@ -68,3 +70,6 @@ transaction2 = Transaction.new({
 })
 
 transaction2.save
+
+binding.pry
+nil
