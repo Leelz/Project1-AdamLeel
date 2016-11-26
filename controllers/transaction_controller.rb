@@ -25,3 +25,14 @@ post '/transactions' do
   redirect to('/transactions')
 end
 
+#delete a transaction from the db
+post 'transactions/:id/delete'  do
+  Transaction.destroy( params[:id]  )
+  redirect to('/transactions')
+end
+
+#show a student from the db
+get '/transactions/:id' do
+  @transaction = Transaction.find( params[:id] )
+  erb(:show)
+end
