@@ -3,7 +3,7 @@ require('date')
 
 class Transaction
 
-  attr_reader( :merchant_id, :category_id, :id , :value, :transaction_date)
+  attr_accessor( :merchant_id, :category_id, :id , :value, :transaction_date)
 
   def initialize( options )
     @id = nil || options['id'].to_i
@@ -14,10 +14,10 @@ class Transaction
   end
 
   def save()
-    sql = "INSERT INTO transactions (
-      merchant_id, category_id, value, transaction_date
+    sql = "INSERT INTO transactions ( 
+    merchant_id,category_id,value,transaction_date
     ) VALUES (
-      #{ @merchant_id },#{ @category_id }, #{@value}, '#{ @transaction_date}'
+    #{@merchant_id}, #{@category_id}, #{@value}, '#{@transaction_date}'
     ) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
@@ -28,6 +28,12 @@ class Transaction
     results = SqlRunner.run( sql )
     return results.map { |hash| Transaction.new( hash ) }
   end
+
+  def self.find( id )
+      sql = "SELECT * FROM transactions WHERE id=#{id}"
+      results = SqlRunner.run( sql )
+      return Transaction.new( results.first )
+    end
 
   def merchant
     sql = "SELECT * FROM merchants m

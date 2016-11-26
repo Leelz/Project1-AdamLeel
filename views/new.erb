@@ -2,32 +2,41 @@
 <form action="/transactions" method="post">
 
 <p>
-<label>Category:
-  <select name="category"> <!-- inputs the topping that was selected in here -->
-    <option value="Food">Food</option>
-    <option value="Drink">Drink</option>
-    <option value="Electrical">Electrical</option>
-    <option value="Clothes">Clothes</option>
-    <option value="Transport">Transport</option>
-  </select>
-  </label>
-</p>
+    <label>
+      Merchant:
+      <select name="merchant_id">
 
-  <p>
-  <label>Merchant:
-    <select name="merchant"> <!-- inputs the topping that was selected in here -->
-      <option value="Tesco">Tesco</option>
-      <option value="House_of_Fraser">House of Fraser</option>
-      <option value="Primark">Primark</option>
-      <option value="McDonalds">McDonalds</option>
-    </select>
+       <% for merchant in @merchants %>
+        <option value="<%=merchant.id%>"><%=merchant.name%></option>
+      <% end %>
+      </select>
     </label>
-  </p>
+    <a href="/merchants/new">Add..</a>
+  </p>  
+  <p>
+    <label>
+      Category:
+      <select name="category_id">
+
+       <% for category in @categories %>
+        <option value="<%=category.id%>"><%=category.name%></option>
+      <% end %>
+      </select>
+    </label>
+    <a href="/categories/new">Add..</a>
+  </p> 
 
   <p>
     <label>
       Value: 
       <input type="number" name="value" />   
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Date: 
+      <input type="date" name="transaction_date" />   
     </label>
   </p>
 

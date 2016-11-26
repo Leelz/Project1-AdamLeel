@@ -13,6 +13,8 @@ end
 
 #make a new transaction with form
 get '/transactions/new' do
+  @categories = Category.all
+  @merchants = Merchant.all
   erb(:new)
 end
 
