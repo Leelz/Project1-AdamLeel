@@ -10,3 +10,8 @@ get '/transactions' do
   @transactions = Transaction.all()
   erb(:index)
 end
+
+#make a new transaction with form
+get '/transactions/new' do
+  erb(:new)
+end

@@ -1,0 +1,35 @@
+<h1>New Transaction</h1>
+<form action="/transactions" method="post">
+
+<p>
+<label>Category:
+  <select name="category"> <!-- inputs the topping that was selected in here -->
+    <option value="Food">Food</option>
+    <option value="Drink">Drink</option>
+    <option value="Electrical">Electrical</option>
+    <option value="Clothes">Clothes</option>
+    <option value="Transport">Transport</option>
+  </select>
+  </label>
+</p>
+
+  <p>
+  <label>Merchant:
+    <select name="merchant"> <!-- inputs the topping that was selected in here -->
+      <option value="Tesco">Tesco</option>
+      <option value="House_of_Fraser">House of Fraser</option>
+      <option value="Primark">Primark</option>
+      <option value="McDonalds">McDonalds</option>
+    </select>
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Value: 
+      <input type="number" name="value" />   
+    </label>
+  </p>
+
+  <input type="submit" value="Submit" />
+</form>
