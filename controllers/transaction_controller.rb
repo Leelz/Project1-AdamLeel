@@ -15,3 +15,10 @@ end
 get '/transactions/new' do
   erb(:new)
 end
+
+#submit new transaction so it's saved
+post '/transactions' do
+  transaction = Transaction.new( params )
+  transaction.save
+  redirect to('/transactions')
+end
