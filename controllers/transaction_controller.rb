@@ -24,3 +24,4 @@ post '/transactions' do
   transaction.save
   redirect to('/transactions')
 end
+
