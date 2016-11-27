@@ -29,7 +29,7 @@ class Category
       name ='#{options['name']}'
       WHERE id='#{options['id']}'"
       SqlRunner.run( sql )
-    end
+  end
 
   def self.find( id )
     sql = "SELECT * FROM categories WHERE id=#{id}"

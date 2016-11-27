@@ -50,7 +50,7 @@ merchant4 = Merchant.new({
 })
 
 merchant4.save
-merchant3.
+
 
 ##########################
 
