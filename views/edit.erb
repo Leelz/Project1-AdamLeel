@@ -1,0 +1,44 @@
+<h1>Edit Transaction</h1>
+<form action="/transactions/<%= @transaction.id %>" method="post">
+
+<p>
+    <label>
+      Merchant:
+      <select name="merchant_id">
+
+       <% for merchant in @merchants %>
+        <option value="<%=merchant.id%>"><%=merchant.name%></option>
+      <% end %>
+      </select>
+    </label>
+  </p>  
+  <p>
+    <label>
+      Category:
+      <select name="category_id">
+
+       <% for category in @categories %>
+        <option value="<%=category.id%>"><%=category.name%></option>
+      <% end %>
+      </select>
+    </label>
+  </p> 
+
+  <p>
+    <label>
+      Value: 
+      <input type="number" name="value" 
+      value="<%= @transaction.value %>"/>  
+    </label>
+  </p>
+
+  <p>
+    <label>
+      Date: 
+      <input type="date" name="transaction_date" 
+      value="<%= @transaction_date %>"/>   
+    </label>
+  </p>
+
+  <input type="submit" value="Submit" />
+</form>

@@ -29,6 +29,16 @@ class Transaction
     return results.map { |hash| Transaction.new( hash ) }
   end
 
+  def self.update( options )
+      sql = "UPDATE transactions SET
+      merchant_id='#{options['merchant_id']}',
+      category_id='#{options['category_id']}',
+      value='#{options['value']}',
+      transaction_date='#{options['transaction_date']}'
+      WHERE id='#{options['id']}'"
+      SqlRunner.run( sql )
+    end
+
   def self.find( id )
       sql = "SELECT * FROM transactions WHERE id=#{id}"
       results = SqlRunner.run( sql )

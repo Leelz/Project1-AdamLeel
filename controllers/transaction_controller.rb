@@ -31,8 +31,24 @@ post 'transactions/:id/delete'  do
   redirect to('/transactions')
 end
 
-#show a student from the db
+#show a transaction from the db
 get '/transactions/:id' do
+  @categories = Category.all
+  @merchants = Merchant.all
   @transaction = Transaction.find( params[:id] )
   erb(:show)
+end
+
+#edit a transaction
+get '/transactions/:id/edit' do
+  @categories = Category.all
+  @merchants = Merchant.all
+  @transaction = Transaction.find( params[:id] )
+  erb(:edit)
+end
+
+#update a transaction
+post '/transactions/:id' do
+  Transaction.update( params)
+  redirect to ("/transactions/#{params[:id]}")
 end
