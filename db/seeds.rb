@@ -51,7 +51,6 @@ merchant4 = Merchant.new({
 
 merchant4.save
 
-
 ##########################
 
 transaction1 = Transaction.new({
