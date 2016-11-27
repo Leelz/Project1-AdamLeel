@@ -24,6 +24,13 @@ class Category
     return results.map { |hash| Category.new( hash ) }
   end
 
+  def self.update( options )
+      sql = "UPDATE categories SET
+      name ='#{options['name']}'
+      WHERE id='#{options['id']}'"
+      SqlRunner.run( sql )
+    end
+
   def self.find( id )
     sql = "SELECT * FROM categories WHERE id=#{id}"
     results = SqlRunner.run( sql )
