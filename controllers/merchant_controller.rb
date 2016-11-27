@@ -2,44 +2,45 @@ require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require_relative( '../models/merchant.rb' )
 
-#list all the transactions
+#list all the merchant
 get '/merchants' do
-  @transactions = Transaction.all()
-  erb(:index)
+  @merchants = Merchant.all()
+  erb(:"merchants/index")
 end
 
-#make a new transaction with form
-get '/transactions/new' do
-  erb(:new)
+#make a new merchant with form
+get '/merchants/new' do
+  @merchants = Merchant.all()
+  erb(:"merchants/new")
 end
 
-#submit new transaction so it's saved
-post '/transactions' do
-  transaction = Transaction.new( params )
-  transaction.save
-  redirect to('/transactions')
+# #submit new merchant so it's saved
+post '/merchants' do
+  merchant = Merchant.new( params )
+  merchant.save
+  redirect to('/merchants/new')
 end
 
-#delete a transaction from the db
-post 'transactions/:id/delete'  do
-  Transaction.destroy( params[:id]  )
-  redirect to('/transactions')
+# #delete a merchant from the db
+post '/merchants/:id/delete'  do
+  Merchant.destroy( params[:id]  )
+  redirect to('/merchants')
 end
 
-#show a transaction from the db
-get '/transactions/:id' do
-  @transaction = Transaction.find( params[:id] )
-  erb(:show)
+# #show a merchant from the db
+get '/merchants/:id' do
+  @merchant = Merchant.find( params[:id] )
+  erb(:"merchants/show")
 end
 
-#edit a transaction
-get '/transactions/:id/edit' do
-  @transaction = Transaction.find( params[:id] )
-  erb(:edit)
+# #edit a merchant
+get '/merchants/:id/edit' do
+  @merchant = Merchant.find( params[:id] )
+  erb(:"merchants/edit")
 end
 
-#update a transaction
-post '/transactions/:id' do
-  Transaction.update( params)
-  redirect to ("/transactions/#{params[:id]}")
+# #update a merchant
+post '/merchants/:id' do
+  Merchant.update( params)
+  redirect to ("/merchants/#{params[:id]}")
 end

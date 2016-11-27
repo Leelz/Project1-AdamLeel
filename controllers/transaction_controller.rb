@@ -25,7 +25,7 @@ post '/transactions' do
 end
 
 #delete a transaction from the db
-post 'transactions/:id/delete'  do
+post '/transactions/:id/delete'  do
   Transaction.destroy( params[:id]  )
   redirect to('/transactions')
 end
