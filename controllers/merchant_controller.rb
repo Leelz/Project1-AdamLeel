@@ -21,11 +21,11 @@ post '/merchants' do
   redirect to('/merchants/new')
 end
 
-# #delete a merchant from the db
-post '/merchants/:id/delete'  do
-  Merchant.destroy( params[:id]  )
-  redirect to('/merchants')
-end
+# CANNOT DELETE DUE TO FOREIGN KEY CONTRAINTS
+# post '/merchants/:id/delete'  do
+#   Merchant.destroy( params[:id]  )
+#   redirect to('/merchants')
+# end
 
 # #show a merchant from the db
 get '/merchants/:id' do
