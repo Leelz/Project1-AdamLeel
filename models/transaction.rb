@@ -30,9 +30,8 @@ class Transaction
   end
 
 
-  def filter_by_transaction
-    sql = "SELECT * FROM transactions
-    WHERE merchant_id=#{id}"
+  def filter_by_merchant
+    sql = "SELECT * FROM transactions WHERE merchant_id=#{id}"
     SqlRunner.run( sql )
     return results.map { |hash| Category.new( hash ) }
   end

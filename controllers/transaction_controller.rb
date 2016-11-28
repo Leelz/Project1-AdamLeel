@@ -3,6 +3,7 @@ require( 'sinatra/contrib/all' )
 require_relative( '../models/category.rb' )
 require_relative( '../models/merchant.rb' )
 require_relative( '../models/transaction.rb' )
+require('pry-byebug')
 
 #list all the transactions
 get '/transactions' do
@@ -36,6 +37,14 @@ get '/transactions/:id' do
   @merchants = Merchant.all
   @transaction = Transaction.find( params[:id] )
   erb(:"transactions/show")
+end
+
+# show a transaction from the db with a paticular merchant_id
+get '/transactions/:merchant_id' do
+  @categories = Category.all
+  @merchants = Merchant.all
+  @transaction = Transaction.filter_by_merchant( params[:merchant_id] )
+  erb(:"transactions/merchant_sort")
 end
 
 #show a transaction from the db by category_id

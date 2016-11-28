@@ -63,13 +63,22 @@ transaction1 = Transaction.new({
 transaction1.save
 
 transaction2 = Transaction.new({
-  'category_id' => category1.id,
-  'merchant_id' => merchant1.id,
+  'category_id' => category2.id,
+  'merchant_id' => merchant2.id,
   'value' => 50,
   'transaction_date' => "20-11-2016"
 })
 
 transaction2.save
+
+transaction3 = Transaction.new({
+  'category_id' => category3.id,
+  'merchant_id' => merchant3.id,
+  'value' => 50,
+  'transaction_date' => "20-11-2016"
+})
+
+transaction3.save
 
 binding.pry
 nil
