@@ -29,6 +29,14 @@ class Transaction
     return results.map { |hash| Transaction.new( hash ) }
   end
 
+
+  def filter_by_transaction
+    sql = "SELECT * FROM transactions
+    WHERE merchant_id=#{id}"
+    SqlRunner.run( sql )
+    return results.map { |hash| Category.new( hash ) }
+  end
+
   def self.update( options )
       sql = "UPDATE transactions SET
       merchant_id='#{options['merchant_id']}',
@@ -71,6 +79,6 @@ class Transaction
   def self.destroy(id)
     sql = "DELETE FROM transactions where id = #{id}"
     SqlRunner.run( sql )
-  end
+  end 
 
 end

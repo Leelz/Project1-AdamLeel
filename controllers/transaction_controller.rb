@@ -7,14 +7,14 @@ require_relative( '../models/transaction.rb' )
 #list all the transactions
 get '/transactions' do
   @transactions = Transaction.all()
-  erb(:index)
+  erb(:"transactions/index")
 end
 
 #make a new transaction with form
 get '/transactions/new' do
   @categories = Category.all
   @merchants = Merchant.all
-  erb(:new)
+  erb(:"transactions/new")
 end
 
 #submit new transaction so it's saved
@@ -35,7 +35,15 @@ get '/transactions/:id' do
   @categories = Category.all
   @merchants = Merchant.all
   @transaction = Transaction.find( params[:id] )
-  erb(:show)
+  erb(:"transactions/show")
+end
+
+#show a transaction from the db by category_id
+get '/transactions/:merchant' do
+  @categories = Category.all
+  @merchants = Merchant.all
+  @transaction = Transaction.find( params[:id] )
+  erb(:"transactions/show")
 end
 
 #edit a transaction
@@ -43,7 +51,7 @@ get '/transactions/:id/edit' do
   @categories = Category.all
   @merchants = Merchant.all
   @transaction = Transaction.find( params[:id] )
-  erb(:edit)
+  erb(:"transactions/edit")
 end
 
 #update a transaction
