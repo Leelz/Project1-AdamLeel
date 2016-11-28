@@ -14,7 +14,7 @@ get '/categories/new' do
   erb(:"categories/new")
 end
 
-# #submit new category so it's saved
+#submit new category so it's saved
 post '/categories' do
   category = Category.new( params )
   category.save
@@ -39,7 +39,7 @@ get '/categories/:id/edit' do
   erb(:"categories/edit")
 end
 
-# #update a Category
+# #update a category
 post '/categories/:id' do
   Category.update( params)
   redirect to ("/categories/#{params[:id]}")

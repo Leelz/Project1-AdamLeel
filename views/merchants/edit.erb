@@ -1,10 +1,10 @@
 <h1>Edit Transaction</h1>
-<form action="/merchants/<%= @merchant.id %>" method="post">
+<form action="/transactions/merchants/<%= @merchant.id %>" method="post">
 
 <p>
     <label>
       Merchant name: 
-      <input type="text" name="merchant_name" value="<%= @merchant.name %>" />
+      <input type="text" name="name" value="<%= @merchant.name %>" />
     </label>
   </p>
     
