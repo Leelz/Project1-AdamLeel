@@ -25,7 +25,8 @@ class Merchant
   end
 
   def self.update( options )
-      sql = "UPDATE merchants SET
+      sql = "UPDATE merchants 
+      SET
       name ='#{options['name']}'
       WHERE 
       id='#{options['id']}'"

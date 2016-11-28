@@ -2,13 +2,28 @@
 
 <p><a href="/transactions/new">Create Transaction</a></p>
 
-<% for transaction in @transactions%>
-<p> Category: <%= transaction.category.name() %></p>
-<p> Merchant: <%= transaction.merchant.name() %></p>
-<p> Value: <%= transaction.value() %></p>
-<p> Transaction Date: <%= transaction.transaction_date() %></p>
 
-<p><a href="/transactions/<%= transaction.id %>">Show</a></p>
-<hr/>
+<table border="1px">
+  <tr>
+     <th>Category</th>
+     <th>Merchant</th>
+     <th>Value</th>
+     <th>Transaction Date</th>
+     <th>See more</th>
+   </tr>
+   <% for transaction in @transactions%>
+   <tr>
+    <td><%= transaction.category.name() %></td>
+    <td><%= transaction.merchant.name() %></td>
+    <td><%= transaction.value() %></td>
+    <td><%= transaction.transaction_date() %></td>
+    <td><a href="/transactions/<%= transaction.id %>">Show</a></td>
+    </tr>
+    <% end %>
+</table>
 
-<% end %>
+
+
+
+
+
