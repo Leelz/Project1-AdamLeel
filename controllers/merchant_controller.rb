@@ -9,7 +9,7 @@ get '/transactions/merchants' do
 end
 
 #make a new merchant with form
-get '/merchants/new' do
+get '/transactions/merchants/new' do
   @merchants = Merchant.all()
   erb(:"merchants/new")
 end

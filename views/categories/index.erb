@@ -1,11 +1,11 @@
 <h1>Categories</h1>
 
-<p><a href="/categories/new">Create Category</a></p>
+<p><a href="/transactions/categories/new">Create Category</a></p>
 
 <% for category in @categories%>
 <p> Category: <%= category.name() %></p>
 
-<p><a href="/categories/<%= category.id %>">Show</a></p>
+<p><a href="/transactions/categories/<%= category.id %>">Show</a></p>
 <hr/>
 
 <% end %>
