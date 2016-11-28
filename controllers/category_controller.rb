@@ -1,46 +1,46 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
-require_relative( '../models/merchant.rb' )
+require_relative( '../models/category.rb' )
 
-#list all the merchant
-get '/merchants' do
-  @merchants = Merchant.all()
-  erb(:"merchants/index")
+#list all the category
+get '/categories' do
+  @categories = Category.all()
+  erb(:"categories/index")
 end
 
-#make a new merchant with form
-get '/merchants/new' do
-  @merchants = Merchant.all()
-  erb(:"merchants/new")
+#make a new category with form
+get '/categories/new' do
+  @categories = Category.all()
+  erb(:"categories/new")
 end
 
-# #submit new merchant so it's saved
-post '/merchants' do
-  merchant = Merchant.new( params )
-  merchant.save
-  redirect to('/merchants/new')
+# #submit new category so it's saved
+post '/categories' do
+  category = Category.new( params )
+  category.save
+  redirect to('/categories/new')
 end
 
 # CANNOT DELETE DUE TO FOREIGN KEY CONTRAINTS
-# post '/merchants/:id/delete'  do
-#   Merchant.destroy( params[:id]  )
-#   redirect to('/merchants')
+#   post '/categories/:id/delete'  do
+#   Category.destroy( params[:id]  )
+#   redirect to('/categories')
 # end
 
-# #show a merchant from the db
-get '/merchants/:id' do
-  @merchant = Merchant.find( params[:id] )
-  erb(:"merchants/show")
+# #show a category from the db
+get '/categories/:id' do
+  @category = Category.find( params[:id] )
+  erb(:"categories/show")
 end
 
-# #edit a merchant
-get '/merchants/:id/edit' do
-  @merchant = Merchant.find( params[:id] )
-  erb(:"merchants/edit")
+# #edit a category
+get '/categories/:id/edit' do
+  @category = Category.find( params[:id] )
+  erb(:"categories/edit")
 end
 
-# #update a merchant
-post '/merchants/:id' do
-  Merchant.update( params)
-  redirect to ("/merchants/#{params[:id]}")
+# #update a Category
+post '/categories/:id' do
+  Category.update( params)
+  redirect to ("/categories/#{params[:id]}")
 end
