@@ -40,19 +40,11 @@ get '/transactions/:id' do
 end
 
 # show a transaction from the db with a paticular merchant_id
-get '/transactions/:merchant_id' do
+get '/transactions/merchant/:id' do
   @categories = Category.all
   @merchants = Merchant.all
-  @transaction = Transaction.filter_by_merchant( params[:merchant_id] )
+  @transactions = Transaction.filter_by_merchant( params[:id].to_i )
   erb(:"transactions/merchant_sort")
-end
-
-#show a transaction from the db by category_id
-get '/transactions/:merchant' do
-  @categories = Category.all
-  @merchants = Merchant.all
-  @transaction = Transaction.find( params[:id] )
-  erb(:"transactions/show")
 end
 
 #edit a transaction

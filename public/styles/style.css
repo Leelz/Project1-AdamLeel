@@ -1,0 +1,14 @@
+h1  {
+  text-align: center;
+  color: white;
+}
+
+#header {
+  z-index: 1;
+  position: fixed;
+  width: 97.5%;
+  margin-top: -20px;
+  height: 70px;
+  background-color: #2B65EC;
+  margin-bottom: 10px;
+}

@@ -7,8 +7,8 @@ class Transaction
 
   def initialize( options )
     @id = nil || options['id'].to_i
-    @merchant_id = options['merchant_id']
-    @category_id = options['category_id']
+    @merchant_id = options['merchant_id'].to_i
+    @category_id = options['category_id'].to_i
     @value = options['value'].to_i
     @transaction_date = Date.parse(options['transaction_date'])
   end
@@ -29,11 +29,10 @@ class Transaction
     return results.map { |hash| Transaction.new( hash ) }
   end
 
-
-  def filter_by_merchant
-    sql = "SELECT * FROM transactions WHERE merchant_id=#{id}"
-    SqlRunner.run( sql )
-    return results.map { |hash| Category.new( hash ) }
+  def self.filter_by_merchant( merchant_id )
+    sql = "SELECT * FROM transactions WHERE merchant_id=#{merchant_id}"
+    results = SqlRunner.run( sql )
+    return results.map { |hash| Transaction.new( hash ) }
   end
 
   def self.update( options )
