@@ -8,6 +8,8 @@ require('pry-byebug')
 #list all the transactions
 get '/transactions' do
   @transactions = Transaction.all()
+  @categories = Category.all()
+  @total = Transaction.total(@transactions)
   erb(:"transactions/index")
 end
 

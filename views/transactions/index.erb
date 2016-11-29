@@ -18,20 +18,17 @@
     <td><a href="/transactions/merchant/<%= transaction.merchant_id %>">Show merchant</a></td>
     </tr>
     <% end %>
+    <p><%= @total %><p>
 
-<p>
-    <%= total_value = 0 %>
-    <% for transaction in @transactions%>
-      <%= total_value + transaction.value%>
+  <label>
+    <form action = "/categories/filter" method="post">
+    <select name="category_id">
+    <% for category in @categories %>
+      <option value="<%=category.id%>"><%=category.name%></option>
     <% end %>
-</p>
-
+    </select>
+  </label>
+  <input type="submit" value="Filter"/>
 </table>
-
-
-
-
-
-
 
 

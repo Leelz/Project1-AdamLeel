@@ -1,6 +1,7 @@
 require( 'sinatra' )
 require( 'sinatra/contrib/all' )
 require_relative( '../models/category.rb' )
+require_relative( '../models/transaction.rb' )
 
 #list all the category
 get '/categories' do
@@ -27,13 +28,20 @@ end
 #   redirect to('/categories')
 # end
 
-# #show a category from the db
+# show a category from the db
 get '/categories/:id' do
-  @category = Category.find( params[:id] )
+  @filtered_list = Transaction.filter_by_category( params[:id] )
+  @filtered_total_value = Transaction.total(@filtered_list)
   erb(:"categories/show")
 end
 
-# #edit a category
+# take in the product of the category for loop in transactions/index.erb
+post '/categories/filter' do
+  @categories = Category.all()
+  redirect to ("/categories/#{params[:category_id]}")
+end 
+
+#edit a category
 get '/categories/:id/edit' do
   @category = Category.find( params[:id] )
   erb(:"categories/edit")

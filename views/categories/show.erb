@@ -1,7 +1,22 @@
-<p>Category: <%= @category.name %></p>
+<p>£<%= @filtered_total_value %><p>
 
-<p>
-  <a href="/categories/<%= @category.id %>/edit"> Edit </a>
-</p>
+<table>
+  <tr>
+     <th>Category</th>
+     <th>Merchant</th>
+     <th>Value</th>
+     <th>Transaction Date</th>
+     <th>See more</th>
+   </tr>
+   <% for transaction in @filtered_list%>
+  
+   <tr>
+    <td><%= transaction.category.name() %></td>
+    <td><%= transaction.merchant.name() %></td>
+    <td><%= transaction.value() %></td>
+    <td><%= transaction.transaction_date() %></td>
+    <td><a href="/transactions/<%= transaction.id %>">Show</a></td>
+    </tr>
+    <% end %>
 
-</form>
+</table>
