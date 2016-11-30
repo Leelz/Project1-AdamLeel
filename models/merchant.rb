@@ -49,11 +49,5 @@ class Merchant
     SqlRunner.run( sql )
   end
 
-  def filter_by_category
-    sql = "SELECT * FROM categories
-    WHERE name=#{name}"
-    SqlRunner.run( sql )
-    return results.map { |hash| Category.new( hash ) }
-  end
 
 end
