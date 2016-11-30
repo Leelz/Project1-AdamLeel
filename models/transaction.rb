@@ -9,7 +9,7 @@ class Transaction
     @id = nil || options['id'].to_i
     @merchant_id = options['merchant_id'].to_i
     @category_id = options['category_id'].to_i
-    @value = options['value'].to_i
+    @value = options['value'].to_f
     @item = options['item']
     @transaction_date = Date.parse(options['transaction_date'])
   end
@@ -18,7 +18,7 @@ class Transaction
     sql = "INSERT INTO transactions ( 
     merchant_id,category_id,value,transaction_date,item
     ) VALUES (
-    #{@merchant_id}, #{@category_id}, #{@value}, '#{@transaction_date}', '#{item}'
+    #{@merchant_id}, #{@category_id}, #{@value}, '#{@transaction_date}', '#{@item}'
     ) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i

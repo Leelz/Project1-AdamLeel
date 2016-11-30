@@ -67,7 +67,8 @@ transaction2 = Transaction.new({
   'category_id' => category2.id,
   'merchant_id' => merchant2.id,
   'value' => 50,
-  'transaction_date' => "20-11-2016"
+  'transaction_date' => "20-11-2016",
+  'item' => 'sweet potato'
 })
 
 transaction2.save
@@ -76,7 +77,8 @@ transaction3 = Transaction.new({
   'category_id' => category3.id,
   'merchant_id' => merchant3.id,
   'value' => 50,
-  'transaction_date' => "20-11-2016"
+  'transaction_date' => "20-11-2016",
+  'item' => 'Big Mac'
 })
 
 transaction3.save
