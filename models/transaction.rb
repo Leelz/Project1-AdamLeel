@@ -10,7 +10,7 @@ class Transaction
     @merchant_id = options['merchant_id'].to_i
     @category_id = options['category_id'].to_i
     @value = options['value'].to_i
-    @item = options['item'].to_i
+    @item = options['item']
     @transaction_date = Date.parse(options['transaction_date'])
   end
 

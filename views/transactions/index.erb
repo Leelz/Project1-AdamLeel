@@ -1,48 +1,45 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Pennywise</title>
+  <ul class="controls">
+    <li>
+    <p class="button">
+      <a href="/transactions/new">Create Transaction</a>
+    </p>
+    </li>
+    <li>
+    <p>£<%= @total %></p>
+    </li>
+  </ul>
 
-<link rel="stylesheet" type="text/css" href="/styles/index.css">
-
-  </head>
-
-
-  <body>
-<div id=button>
-  <p><a href="/transactions/new">Create Transaction</a></p>
+<div class="table title=">
+  <h2>Data Table</h2>
 </div>
-
-<table>
-  <tr>
+  <table>
+    <tr>
+      <th>Transaction Date</th>
+      <th>item</th>
      <th>Category</th>
      <th>Merchant</th>
      <th>Value</th>
-     <th>Transaction Date</th>
-     <th>See more</th>
    </tr>
    <% for transaction in @transactions%>
    <tr>
+   <td><%= transaction.transaction_date() %></td>
+   <td><%= transaction.item() %></td>
     <td><%= transaction.category.name() %></td>
     <td><%= transaction.merchant.name() %></td>
     <td>£<%= transaction.value() %></td>
-    <td><%= transaction.transaction_date() %></td>
-    <td><a href="/transactions/<%= transaction.id %>">Show</a></td>
-    <td><a href="/transactions/merchant/<%= transaction.merchant_id %>">Show merchant</a></td>
-    </tr>
-    <% end %>
-    <p>£<%= @total %><p>
+  </tr>
+  <% end %>
+  </table>
+  </div>
 
   <label>
     <form action = "/categories/filter" method="post">
-    <select name="category_id">
-    <% for category in @categories %>
-      <option value="<%=category.id%>"><%=category.name%></option>
-    <% end %>
-    </select>
-  </label>
-  <input type="submit" value="Filter"/>
-</table>
-</body>
-</html>
+      <select name="category_id">
+        <% for category in @categories %>
+        <option value="<%=category.id%>"><%=category.name%></option>
+        <% end %>
+      </select>
+    </label>
+    <input type="submit" value="Filter"/>
+
 

@@ -1,5 +1,4 @@
 #header {
-  width: 97.5%;
   margin-top: -20px;
   height: 100px;
   background-color: #4c4cff;
@@ -25,10 +24,6 @@ h1  {
   align-self: center;
   }
 
-#nav {
-  width: 97.5%;
-}
-
 #nav ul {
     list-style-type: none;
     margin: 0;
@@ -39,7 +34,7 @@ h1  {
 }
 
 #nav li {
-    float: left;
+  display: inline-block;
 }
 
 #nav li a {
@@ -58,3 +53,5 @@ h1  {
     color: white;
     background-color: #4CAF50;
 }
+
+table

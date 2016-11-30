@@ -2,15 +2,16 @@
 
 <table>
   <tr>
+      <th>Item</th>
      <th>Category</th>
      <th>Merchant</th>
      <th>Value</th>
      <th>Transaction Date</th>
-     <th>See more</th>
    </tr>
    <% for transaction in @filtered_list%>
   
    <tr>
+   <td><%= transaction.item() %></td>
     <td><%= transaction.category.name() %></td>
     <td><%= transaction.merchant.name() %></td>
     <td>£<%= transaction.value() %></td>

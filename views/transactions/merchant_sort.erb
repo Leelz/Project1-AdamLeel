@@ -4,7 +4,6 @@
      <th>Merchant</th>
      <th>Value</th>
      <th>Transaction Date</th>
-     <th>See more</th>
    </tr>
    <% for transaction in @transactions%>
   
@@ -13,7 +12,6 @@
     <td><%= transaction.merchant.name() %></td>
     <td>£<%= transaction.value() %></td>
     <td><%= transaction.transaction_date() %></td>
-    <td><a href="/transactions/<%= transaction.id %>">Show</a></td>
     </tr>
     <% end %>
 
