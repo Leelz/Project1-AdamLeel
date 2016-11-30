@@ -9,29 +9,6 @@
     </li>
   </ul>
 
-<div class="table title=">
-  <h2>Data Table</h2>
-</div>
-  <table>
-    <tr>
-      <th>Transaction Date</th>
-      <th>item</th>
-     <th>Category</th>
-     <th>Merchant</th>
-     <th>Value</th>
-   </tr>
-   <% for transaction in @transactions%>
-   <tr>
-   <td><%= transaction.transaction_date() %></td>
-   <td><%= transaction.item() %></td>
-    <td><%= transaction.category.name() %></td>
-    <td><%= transaction.merchant.name() %></td>
-    <td>£<%= transaction.value() %></td>
-  </tr>
-  <% end %>
-  </table>
-  </div>
-
   <label>
     <form action = "/categories/filter" method="post">
       <select name="category_id">
@@ -41,5 +18,34 @@
       </select>
     </label>
     <input type="submit" value="Filter"/>
+
+<div class="table title=">
+  <h2>All Transactions</h2>
+</div>
+<table class="table-fill">
+  <thead>
+    <tr>
+      <th>Transaction Date</th>
+      <th>item</th>
+     <th>Category</th>
+     <th>Merchant</th>
+     <th>Value</th>
+   </tr>
+   </thead>
+   <tbody class="table-hover">
+   <% for transaction in @transactions%>
+   <tr>
+   <td class ="text-left"><%= transaction.transaction_date() %></td>
+   <td class ="text-left"><%= transaction.item() %></td>
+    <td class ="text-left"><%= transaction.category.name() %></td>
+    <td class ="text-left"><%= transaction.merchant.name() %></td>
+    <td class ="text-left">£<%= transaction.value() %></td>
+  </tr>
+  <% end %>
+  </tbody>
+  </table>
+  </div>
+
+  
 
 
