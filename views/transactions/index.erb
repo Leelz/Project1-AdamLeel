@@ -5,7 +5,7 @@
     </p>
     </li>
     <li>
-    <p>£<%= @total %></p>
+    <p>Total credit: £<%= @total %></p>
     </li>
   </ul>
 
@@ -30,6 +30,7 @@
      <th>Category</th>
      <th>Merchant</th>
      <th>Value</th>
+     <th>Edit</th>
    </tr>
    </thead>
    <tbody class="table-hover">
@@ -40,6 +41,7 @@
     <td class ="text-left"><%= transaction.category.name() %></td>
     <td class ="text-left"><%= transaction.merchant.name() %></td>
     <td class ="text-left">£<%= transaction.value() %></td>
+    <td><a href="/transactions/<%= transaction.id() %>">Edit</a></td>
   </tr>
   <% end %>
   </tbody>

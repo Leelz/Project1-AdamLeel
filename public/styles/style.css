@@ -8,10 +8,19 @@
   display: flex;
 }
 
+
+
 h1  {
   color: white;
   display: block;
-  color: white;
+  text-align: left;
+  padding: 14px 16px;
+  font-family: 'Lato', serif;
+}
+
+h2  {
+  display: block;
+  color: black;
   text-align: left;
   padding: 14px 16px;
   font-family: 'Lato', serif;
