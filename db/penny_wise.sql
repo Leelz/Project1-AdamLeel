@@ -20,5 +20,6 @@ CREATE TABLE transactions
   merchant_id INT8 references merchants(id),
   category_id INT8 references categories(id),
   value INT8,
+  item VARCHAR(255) not null,
   transaction_date date
 );

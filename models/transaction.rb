@@ -3,21 +3,22 @@ require('date')
 
 class Transaction
 
-  attr_accessor( :merchant_id, :category_id, :id , :value, :transaction_date)
+  attr_accessor( :merchant_id, :category_id, :id , :value, :transaction_date, :item)
 
   def initialize( options )
     @id = nil || options['id'].to_i
     @merchant_id = options['merchant_id'].to_i
     @category_id = options['category_id'].to_i
     @value = options['value'].to_i
+    @item = options['item'].to_i
     @transaction_date = Date.parse(options['transaction_date'])
   end
 
   def save()
     sql = "INSERT INTO transactions ( 
-    merchant_id,category_id,value,transaction_date
+    merchant_id,category_id,value,transaction_date,item
     ) VALUES (
-    #{@merchant_id}, #{@category_id}, #{@value}, '#{@transaction_date}'
+    #{@merchant_id}, #{@category_id}, #{@value}, '#{@transaction_date}', '#{item}'
     ) RETURNING *"
     results = SqlRunner.run(sql)
     @id = results.first()['id'].to_i
@@ -46,7 +47,7 @@ class Transaction
     merchant_id='#{options['merchant_id']}',
     category_id='#{options['category_id']}',
     value='#{options['value']}',
-    transaction_date='#{options['transaction_date']}'
+    transaction_date='#{options['transaction_date']}',item='#{options['item']}'
     WHERE id='#{options['id']}'"
     SqlRunner.run( sql )
   end
