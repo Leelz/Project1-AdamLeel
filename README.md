@@ -13,8 +13,9 @@ Running the app:
 3. Create the SQL database with the following command in terminal:
       createdb penny_wise
       
- In the folder "db"
-      psql -d penny_wise -f penny_wise.sql
-Ruby seeds.rb
-In the top level run ruby app.rb
-In the address bar type http://localhost:4567/transactions - this will take you to the Apps homepage.
+4. In the folder "db" enter the following commands in terminal:
+      - psql -d penny_wise -f penny_wise.sql
+      - Ruby seeds.rb
+5. In the top level run the app using the following command:
+      - ruby app.rb
+6. In the address bar type http://localhost:4567/transactions - this will take you to the Apps homepage.
